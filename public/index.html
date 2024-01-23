@@ -21,28 +21,24 @@
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
     <style>
-      /* Add your custom styles, animations, and colors here */
       body {
-        background-color: #f0f0f0;
-        color: #333;
         font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
       }
 
       header {
         background-color: #007bff;
         color: #fff;
-        padding: 10px;
+        padding: 15px;
         text-align: center;
         cursor: pointer;
       }
 
       header:hover {
         background-color: #0056b3;
-      }
-
-      .options-link {
-        text-decoration: none;
-        color: inherit;
       }
 
       .flex-center {
@@ -63,22 +59,41 @@
 
       h1 {
         margin: 0;
+        font-size: 24px;
       }
 
       .desc {
         margin-top: 10px;
+        text-align: center;
       }
 
       #uv-form {
         margin-top: 20px;
+        text-align: center;
+      }
+
+      #uv-address {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .desc.left-margin {
+        margin: 10px;
+        text-align: center;
       }
 
       footer {
         margin-top: 20px;
         background-color: #007bff;
         color: #fff;
-        padding: 10px;
+        padding: 15px;
         text-align: center;
+      }
+
+      footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
       }
     </style>
   </head>
@@ -93,7 +108,7 @@
       <h1>Infrared | LN</h1>
     </div>
 
-    <div class="flex-center desc left-margin">
+    <div class="flex-center desc">
       <p>
         Infrared is a highly sophisticated proxy used for evading internet
         censorship.
