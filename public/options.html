@@ -6,7 +6,19 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Options</title>
+    <title>Infrared</title>
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#434c5e"
+    />
+    <link rel="shortcut icon" content="favicon.ico" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -36,46 +48,84 @@
         margin-top: 15px;
         padding: 10px;
         cursor: pointer;
-        background-color: #007bff;
+        background-color: #434c5e;
         color: #fff;
         border: none;
         border-radius: 5px;
       }
 
       button:hover {
-        background-color: #0056b3;
+        background-color: #434c5e;
       }
     </style>
   </head>
 
   <body>
-    <h1>Options</h1>
-    <h2>Cloaking</h2>
-    <label for="tabName">Tab Name:</label>
-    <input type="text" id="tabName" placeholder="Enter tab name" />
+    <header>
+      <!-- Multiple buttons in one row -->
+      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href='options.html'">Options</button>
+    </header>
 
-    <label for="faviconURL">Icon URL:</label>
-    <input type="text" id="faviconURL" placeholder="Enter favicon URL" />
+    <div class="flex-center logo-wrapper header-center">
+      <img class="logo" src="ir.png" alt="Infrared" />
+      <h1 id="pageTitle">Infrared | LN</h1>
+    </div>
+    <form id="uv-form" class="flex-center">
+      <input
+        id="uv-search-engine"
+        value="https://www.google.com/search?q=%s"
+        type="hidden"
+      />
+      <input id="uv-address" type="text" placeholder="Search Google or type a URL" />
+    </form>
 
-    <button onclick="spoofWebsite()">Cloak</button>
+    <div class="desc left-margin">
+      <p id="uv-error"></p>
+      <pre id="uv-error-code"></pre>
+    </div>
+
+    <footer>
+      <div>
+        <a title="FatGarfield777 on GitHub" href="https://github.com/FatGarfield777">FatGarfield777</a>
+        <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK">Discord</a>
+      </div>
+      <div>
+        <span>Infrared &copy; LN 2024</span>
+      </div>
+    </footer>
 
     <script>
-      function spoofWebsite() {
-        var tabName = document.getElementById('tabName').value;
-        var faviconURL = document.getElementById('faviconURL').value;
+      // Retrieve stored values or use defaults
+      var tabName = localStorage.getItem('tabName') || 'Infrared | LN';
+      var faviconURL = localStorage.getItem('faviconURL') || 'favicon.ico';
 
-        function setFavicon() {
-          var favicon = document.querySelector('link[rel*="icon"]') || document.createElement('link');
-          favicon.type = 'image/x-icon';
-          favicon.rel = 'shortcut icon';
-          favicon.href = faviconURL;
-          document.title = tabName;
-          console.log(document.title);
-          document.getElementsByTagName('head')[0].appendChild(favicon);
-        }
+      // Apply stored values to the page
+      document.getElementById('pageTitle').textContent = tabName;
+
+      function setFavicon() {
+        var favicon = document.querySelector('link[rel*="icon"]') || document.createElement('link');
+        favicon.type = 'image/x-icon';
+        favicon.rel = 'shortcut icon';
+        favicon.href = faviconURL;
+        document.title = tabName;
+        console.log(document.title);
+        document.getElementsByTagName('head')[0].appendChild(favicon);
+      }
+
+      setFavicon();
+      setInterval(setFavicon, 1000);
+
+      // Update values and store in local storage on button click
+      function spoofWebsite() {
+        tabName = document.getElementById('tabName').value;
+        faviconURL = document.getElementById('faviconURL').value;
+
+        // Store values in local storage
+        localStorage.setItem('tabName', tabName);
+        localStorage.setItem('faviconURL', faviconURL);
 
         setFavicon();
-        setInterval(setFavicon, 1000);
       }
     </script>
   </body>
