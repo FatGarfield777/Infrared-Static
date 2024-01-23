@@ -12,7 +12,6 @@
       media="(prefers-color-scheme: dark)"
       content="#434c5e"
     />
-    <meta name="googlebot" content="index, follow, snippet" />
     <link rel="shortcut icon" content="favicon.ico" />
     <link rel="stylesheet" href="index.css" />
     <script src="uv/uv.bundle.js" defer></script>
@@ -21,18 +20,15 @@
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
     <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
       body {
         font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f8f8f8;
+        color: #333;
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: 100vh; /* Set minimum height to 100% of the viewport height */
       }
 
       header {
@@ -56,7 +52,7 @@
       }
 
       header button:hover {
-          background-color: #434c5e;
+        background-color: #434c5e;
       }
 
       .flex-center {
@@ -107,8 +103,8 @@
         color: #fff;
         padding: 15px;
         text-align: center;
-        margin-bottom: auto; /* Push footer to the bottom */
-        width: 100%; /* Full width */
+        margin-top: auto; /* Use margin-top: auto to push the footer to the bottom */
+        width: 100%;
       }
 
       footer a {
