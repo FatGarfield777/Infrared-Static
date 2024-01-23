@@ -37,10 +37,22 @@
         color: #fff;
         padding: 15px;
         text-align: center;
-        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      header:hover {
+      header button {
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 10px;
+      }
+
+      header button:hover {
         background-color: #0056b3;
       }
 
@@ -100,29 +112,15 @@
         text-decoration: none;
         margin: 0 10px;
       }
-
-      button {
-        margin-top: 15px;
-        padding: 10px;
-        cursor: pointer;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-      }
-
-      button:hover {
-        background-color: #0056b3;
-      }
     </style>
   </head>
 
   <body>
-    <header onclick="window.location.href='index.html'">
-      <div>Home</div>
+    <header>
+      <!-- Multiple buttons in one row -->
+      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href='options.html'">Options</button>
     </header>
-
-    <button onclick="window.location.href='options.html'">Options</button>
 
     <div class="flex-center logo-wrapper header-center">
       <img class="logo" src="ir.png" alt="Infrared" />
