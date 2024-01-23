@@ -49,15 +49,15 @@
   </head>
 
   <body>
-    <h1>Website Spoofing Options</h1>
+    <h1>Options</h1>
+    <h2>Cloaking</h2>
+    <label for="tabName">Tab Name:</label>
+    <input type="text" id="tabName" placeholder="Enter tab name" />
 
-    <label for="tabName">Tab Display Name:</label>
-    <input type="text" id="tabName" placeholder="Enter desired tab display name" />
+    <label for="faviconURL">Icon URL:</label>
+    <input type="text" id="faviconURL" placeholder="Enter favicon URL" />
 
-    <label for="faviconURL">Favicon URL:</label>
-    <input type="text" id="faviconURL" placeholder="Enter desired favicon URL" />
-
-    <button onclick="spoofWebsite()">Spoof Website</button>
+    <button onclick="spoofWebsite()">Cloak</button>
 
     <script>
       function spoofWebsite() {
