@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Infrared</title>
+    <meta
       name="theme-color"
       media="(prefers-color-scheme: dark)"
       content="#434c5e"
@@ -19,19 +20,82 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+    <style>
+      /* Add your custom styles, animations, and colors here */
+      body {
+        background-color: #f0f0f0;
+        color: #333;
+        font-family: 'Arial', sans-serif;
+      }
+
+      header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      header:hover {
+        background-color: #0056b3;
+      }
+
+      .options-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo-wrapper {
+        margin-top: 20px;
+      }
+
+      .logo {
+        width: 50px; /* Adjust size as needed */
+        height: auto;
+        margin-right: 10px;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      .desc {
+        margin-top: 10px;
+      }
+
+      #uv-form {
+        margin-top: 20px;
+      }
+
+      footer {
+        margin-top: 20px;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
   </head>
 
   <body>
-    <div
-      title="Infrared Logo"
-      class="flex-center logo-wrapper header-center"
-    >
+    <header onclick="window.location.href='index.html'">
+      Home
+    </header>
+
+    <div class="flex-center logo-wrapper header-center">
       <img class="logo" src="ir.png" alt="Infrared" />
       <h1>Infrared | LN</h1>
     </div>
+
     <div class="flex-center desc left-margin">
       <p>
-        Infrared is highly sophisticated proxy used for evading internet
+        Infrared is a highly sophisticated proxy used for evading internet
         censorship.
       </p>
     </div>
@@ -44,19 +108,16 @@
       />
       <input id="uv-address" type="text" placeholder="Search Google or type a URL" />
     </form>
+
     <div class="desc left-margin">
       <p id="uv-error"></p>
       <pre id="uv-error-code"></pre>
     </div>
+
     <footer>
       <div>
-        <a
-          title="FatGarfield777 on GitHub"
-          href="https://github.com/FatGarfield777"
-          >FatGarfield777</a
-        >
-        <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK"
-          >Discord</a
+        <a title="FatGarfield777 on GitHub" href="https://github.com/FatGarfield777">FatGarfield777</a>
+        <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK">Discord</a>
       </div>
       <div>
         <span>Infrared &copy; LN 2024</span>
