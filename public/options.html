@@ -7,6 +7,14 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Options</title>
+    <script type='text/javascript'>
+      window.smartlook||(function(d) {
+        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+        c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', 'dd0a716ed5e1f27b308b655b63859cc63d3714a3', { region: 'eu' });
+    </script>
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -56,7 +64,7 @@
         padding: 15px;
         text-align: center;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start; /* Align buttons to the left */
         align-items: center;
       }
 
@@ -79,52 +87,32 @@
         margin: 0 10px;
       }
     </style>
-    <script type='text/javascript'>
-      window.smartlook||(function(d) {
-        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-        c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-      })(document);
-      smartlook('init', 'dd0a716ed5e1f27b308b655b63859cc63d3714a3', { region: 'eu' });
+  </head>
 
-      function cloakWebsite() {
-        const tabName = document.getElementById("tabName").value;
-        const faviconURL = document.getElementById("faviconURL").value;
+  <body>
+    <header>
+      <!-- Multiple buttons in one row -->
+      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href='options.html'">Options</button>
+    </header>
 
-        // Check if the URL is an image
-        const isImage = (url) => {
-          const img = new Image();
-          img.src = url;
-          return img.width > 0 && img.height > 0;
-        };
+    <h1>Options</h1>
+    <label for="tabName">Tab Name:</label>
+    <input type="text" id="tabName" placeholder="Enter tab name" />
 
-        if (isImage(faviconURL)) {
-          localStorage.setItem("cloakedTabName", tabName);
-          localStorage.setItem("cloakedFaviconURL", faviconURL);
-          document.title = tabName;
-          const link = document.createElement("link");
-          link.rel = "shortcut icon";
-          link.type = "image/x-icon";
-          link.href = faviconURL;
-          document.getElementsByTagName("head")[0].appendChild(link);
+    <label for="faviconURL">Icon URL:</label>
+    <input type="text" id="faviconURL" placeholder="Enter favicon URL" />
 
-          // Cloak any page on the same link
-          const currentUrl = window.location.href;
-          const newUrl = currentUrl.replace(/\/?$/, `/${tabName}`);
-          window.history.pushState({ path: newUrl }, '', newUrl);
-        } else {
-          // Use the favicon of the website if the provided URL is not an image
-          const originalFaviconURL = "https://yourwebsite.com/favicon.ico"; // Replace with your website's favicon URL
-          localStorage.setItem("cloakedTabName", tabName);
-          localStorage.setItem("cloakedFaviconURL", originalFaviconURL);
-          document.title = tabName;
-          const link = document.createElement("link");
-          link.rel = "shortcut icon";
-          link.type = "image/x-icon";
-          link.href = originalFaviconURL;
-          document.getElementsByTagName("head")[0].appendChild(link);
+    <button onclick="spoofWebsite()">Cloak</button>
 
-          // Cloak any page on the same link
-          const currentUrl = window.location.href;
-          const newUrl = currentUrl.replace(/\/?$/, `/${tabName}`);
-          window
+    <footer>
+      <div>
+        <a title="FatGarfield777 on GitHub" href="https://github.com/FatGarfield777">FatGarfield777</a>
+        <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK">Discord</a>
+      </div>
+      <div>
+        <span>Infrared &copy; LN 2024</span>
+      </div>
+    </footer>
+  </body>
+</html>
