@@ -19,6 +19,14 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+    <script type='text/javascript'>
+      window.smartlook||(function(d) {
+        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+        c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', 'dd0a716ed5e1f27b308b655b63859cc63d3714a3', { region: 'eu' });
+    </script>
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -68,7 +76,7 @@
         padding: 15px;
         text-align: center;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start; /* Align buttons to the left */
         align-items: center;
       }
 
@@ -91,14 +99,6 @@
         margin: 0 10px;
       }
     </style>
-    <script type='text/javascript'>
-      window.smartlook||(function(d) {
-        var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
-        var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
-        c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
-      })(document);
-      smartlook('init', 'dd0a716ed5e1f27b308b655b63859cc63d3714a3', { region: 'eu' });
-    </script>
   </head>
 
   <body>
