@@ -1,156 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>Options</title>
-    <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        overflow: hidden; /* Remove scroll bars */
-        background-color: #67358C; /* Set background color */
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>Options</title>
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #67358C; /* Match the background color of the index page */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-      h1 {
-        text-align: center;
-      }
+    h1 {
+      text-align: center;
+    }
 
-      label {
-        display: block;
-        margin-top: 10px;
-      }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
 
-      input {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-        margin-top: 5px;
-      }
+    input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
 
-      button {
-        margin-top: 15px;
-        padding: 10px;
-        cursor: pointer;
-        background-color: #434c5e;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-      }
+    header {
+      background-color: #2d2d2d; /* Greyish-black */
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      button:hover {
-        background-color: #434c5e;
-      }
+    footer {
+      background-color: #2d2d2d; /* Greyish-black */
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      margin-top: auto; /* Push footer to the bottom */
+      width: 100%; /* Full width */
+      display: flex;
+      justify-content: space-between;
+      align-items: center; /* Center the content vertically */
+      box-sizing: border-box;
+    }
 
-      header {
-        background-color: #2d2d2d; /* Greyish-black */
-        color: #fff;
-        padding: 15px;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+  </style>
+</head>
 
-      footer {
-        background-color: #2d2d2d; /* Greyish-black */
-        color: #fff;
-        padding: 15px;
-        text-align: center;
-        margin-top: auto; /* Push footer to the bottom */
-        width: 100%; /* Full width */
-        display: flex;
-        justify-content: space-between;
-        align-items: center; /* Center the content vertically */
-        box-sizing: border-box;
-      }
+<body>
+  <header>
+    <!-- Multiple buttons in one row -->
+    <button onclick="window.location.href='index.html'">Home</button>
+    <button onclick="window.location.href='options.html'">Options</button>
+  </header>
 
-      footer a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-      }
-    </style>
-  </head>
+  <h1>Options</h1>
+  <label for="tabName">Tab Name:</label>
+  <input type="text" id="tabName" placeholder="Enter tab name" oninput="saveAndSpoof()" />
 
-  <body>
-    <header>
-      <button onclick="window.location.href='index.html'">Home</button>
-      <button onclick="window.location.href='options.html'">Options</button>
-      <button onclick="window.location.href=window.location.origin + '/uv/service/hvtrs8%2F-cjav.mpgnci%2Ccmm-awtj%2Fnoeil'">ChatGPT</button>
-    </header>
+  <label for="faviconURL">Icon URL:</label>
+  <input type="text" id="faviconURL" placeholder="Enter favicon URL" oninput="saveAndSpoof()" />
 
-    <h1>Options</h1>
-    <label for="tabName">Tab Name:</label>
-    <input type="text" id="tabName" placeholder="Enter tab name" />
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadSettings();
+    });
 
-    <label for="faviconURL">Website URL:</label>
-    <input type="text" id="faviconURL" placeholder="Enter website URL" />
+    function loadSettings() {
+      const tabNameInput = document.getElementById('tabName');
+      const faviconURLInput = document.getElementById('faviconURL');
 
-    <button onclick="saveAndSpoof()">Cloak</button>
+      const storedTabName = localStorage.getItem('tabName');
+      const storedFaviconURL = localStorage.getItem('faviconURL');
 
-    <footer>
-      <div>
-        <a title="FatGarfield777 on GitHub" href="https://github.com/FatGarfield777">FatGarfield777</a>
-        <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK">Discord</a>
-      </div>
-      <div>
-        <span>Infrared &copy; LN 2024</span>
-      </div>
-    </footer>
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    loadSettings();
-  });
+      tabNameInput.value = storedTabName || '';
+      faviconURLInput.value = storedFaviconURL || '';
 
-  function loadSettings() {
-    const tabNameInput = document.getElementById('tabName');
-    const faviconURLInput = document.getElementById('faviconURL');
+      // Automatically trigger the spoofing function on load
+      spoofWebsite();
+    }
 
-    const storedTabName = localStorage.getItem('tabName');
-    const storedFaviconURL = localStorage.getItem('faviconURL');
+    function saveSettings() {
+      const tabNameInput = document.getElementById('tabName');
+      const faviconURLInput = document.getElementById('faviconURL');
 
-    tabNameInput.value = storedTabName || '';
-    faviconURLInput.value = storedFaviconURL || '';
-  }
+      localStorage.setItem('tabName', tabNameInput.value);
+      localStorage.setItem('faviconURL', faviconURLInput.value);
+    }
 
-  function saveSettings() {
-    const tabNameInput = document.getElementById('tabName');
-    const faviconURLInput = document.getElementById('faviconURL');
+    function spoofWebsite() {
+      const tabNameInput = document.getElementById('tabName');
+      const faviconURLInput = document.getElementById('faviconURL');
 
-    localStorage.setItem('tabName', tabNameInput.value);
-    localStorage.setItem('faviconURL', faviconURLInput.value);
-  }
+      document.title = tabNameInput.value;
 
-  function spoofWebsite() {
-    const tabNameInput = document.getElementById('tabName');
-    const faviconURLInput = document.getElementById('faviconURL');
+      // Fetch favicon from the provided URL
+      const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
+      faviconLink.type = 'image/x-icon';
+      faviconLink.rel = 'shortcut icon';
+      faviconLink.href = `https://www.google.com/s2/favicons?domain=${faviconURLInput.value}`;
+      document.getElementsByTagName('head')[0].appendChild(faviconLink);
+    }
 
-    document.title = tabNameInput.value;
+    function saveAndSpoof() {
+      saveSettings();
+      spoofWebsite();
+    }
 
-    // Fetch favicon from the provided URL
-    const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    faviconLink.type = 'image/x-icon';
-    faviconLink.rel = 'shortcut icon';
-    faviconLink.href = `https://www.google.com/s2/favicons?domain=${faviconURLInput.value}`;
-    document.getElementsByTagName('head')[0].appendChild(faviconLink);
-  }
+    // Save settings on page unload
+    window.addEventListener('beforeunload', saveSettings);
+  </script>
 
-  function saveAndSpoof() {
-    saveSettings();
-    spoofWebsite();
-  }
-
-  // Save settings on page unload
-  window.addEventListener('beforeunload', saveSettings);
-</script>
-  </body>
+  <footer>
+    <div>
+      <a title="FatGarfield777 on GitHub" href="https://github.com/FatGarfield777">FatGarfield777</a>
+      <a title="The LithiumNetwork Discord" href="https://discord.gg/Vzz9cd7ZqK">Discord</a>
+    </div>
+    <div>
+      <span>Infrared &copy; LN 2024</span>
+    </div>
+  </footer>
+</body>
 </html>
