@@ -8,12 +8,26 @@
     />
     <title>Options</title>
     <link rel="stylesheet" href="index.css" />
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var currentUrl = window.location.href;
+        var urlObject = new URL(currentUrl);
+        var domain = urlObject.hostname;
+        document.getElementById("header").innerText = "Current Domain: " + domain;
+      });
+    </script>
   </head>
 
   <body>
     <header>
-      <button onclick="window.location.href='index.html'">Home</button>
+      <button onclick="window.location.href=window.location.origin">Home</button>
       <button onclick="window.location.href='options.html'">Options</button>
+      <button onclick="window.location.href='/uv/service/hvtrs8%2F-cjav.mpgnci%2Ccmm-awtj%2Fnoeil'">ChatGPT</button>
     </header>
 
     <h1>Options</h1>
