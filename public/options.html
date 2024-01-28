@@ -106,49 +106,51 @@
         <span>Infrared &copy; LN 2024</span>
       </div>
     </footer>
-
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        loadSettings();
-      });
+  document.addEventListener("DOMContentLoaded", function () {
+    loadSettings();
+  });
 
-      function loadSettings() {
-        const tabNameInput = document.getElementById('tabName');
-        const faviconURLInput = document.getElementById('faviconURL');
+  function loadSettings() {
+    const tabNameInput = document.getElementById('tabName');
+    const faviconURLInput = document.getElementById('faviconURL');
 
-        const storedTabName = localStorage.getItem('tabName');
-        const storedFaviconURL = localStorage.getItem('faviconURL');
+    const storedTabName = localStorage.getItem('tabName');
+    const storedFaviconURL = localStorage.getItem('faviconURL');
 
-        tabNameInput.value = storedTabName || '';
-        faviconURLInput.value = storedFaviconURL || '';
-      }
+    tabNameInput.value = storedTabName || '';
+    faviconURLInput.value = storedFaviconURL || '';
+  }
 
-      function saveSettings() {
-        const tabNameInput = document.getElementById('tabName');
-        const faviconURLInput = document.getElementById('faviconURL');
+  function saveSettings() {
+    const tabNameInput = document.getElementById('tabName');
+    const faviconURLInput = document.getElementById('faviconURL');
 
-        localStorage.setItem('tabName', tabNameInput.value);
-        localStorage.setItem('faviconURL', faviconURLInput.value);
-      }
+    localStorage.setItem('tabName', tabNameInput.value);
+    localStorage.setItem('faviconURL', faviconURLInput.value);
+  }
 
-      function spoofWebsite() {
-        const tabNameInput = document.getElementById('tabName');
-        const faviconURLInput = document.getElementById('faviconURL');
+  function spoofWebsite() {
+    const tabNameInput = document.getElementById('tabName');
+    const faviconURLInput = document.getElementById('faviconURL');
 
-        document.title = tabNameInput.value;
+    document.title = tabNameInput.value;
 
-        // Fetch favicon from the provided URL
-        const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
-        faviconLink.type = 'image/x-icon';
-        faviconLink.rel = 'shortcut icon';
-        faviconLink.href = `https://www.google.com/s2/favicons?domain=${faviconURLInput.value}`;
-        document.getElementsByTagName('head')[0].appendChild(faviconLink);
-      }
+    // Fetch favicon from the provided URL
+    const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    faviconLink.type = 'image/x-icon';
+    faviconLink.rel = 'shortcut icon';
+    faviconLink.href = `https://www.google.com/s2/favicons?domain=${faviconURLInput.value}`;
+    document.getElementsByTagName('head')[0].appendChild(faviconLink);
+  }
 
-      function saveAndSpoof() {
-        saveSettings();
-        spoofWebsite();
-      }
-    </script>
+  function saveAndSpoof() {
+    saveSettings();
+    spoofWebsite();
+  }
+
+  // Save settings on page unload
+  window.addEventListener('beforeunload', saveSettings);
+</script>
   </body>
 </html>
