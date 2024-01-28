@@ -85,14 +85,15 @@
     <header>
       <button onclick="window.location.href='index.html'">Home</button>
       <button onclick="window.location.href='options.html'">Options</button>
+      <button onclick="window.location.href=window.location.origin + '/uv/service/hvtrs8%2F-cjav.mpgnci%2Ccmm-awtj%2Fnoeil'">ChatGPT</button>
     </header>
 
     <h1>Options</h1>
     <label for="tabName">Tab Name:</label>
     <input type="text" id="tabName" placeholder="Enter tab name" />
 
-    <label for="faviconURL">Icon URL:</label>
-    <input type="text" id="faviconURL" placeholder="Enter favicon URL" />
+    <label for="faviconURL">Website URL:</label>
+    <input type="text" id="faviconURL" placeholder="Enter website URL" />
 
     <button onclick="saveAndSpoof()">Cloak</button>
 
@@ -135,10 +136,12 @@
         const faviconURLInput = document.getElementById('faviconURL');
 
         document.title = tabNameInput.value;
+
+        // Fetch favicon from the provided URL
         const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
         faviconLink.type = 'image/x-icon';
         faviconLink.rel = 'shortcut icon';
-        faviconLink.href = faviconURLInput.value;
+        faviconLink.href = `https://www.google.com/s2/favicons?domain=${faviconURLInput.value}`;
         document.getElementsByTagName('head')[0].appendChild(faviconLink);
       }
 
