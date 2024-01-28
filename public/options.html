@@ -7,27 +7,84 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
     <title>Options</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="uv/uv.bundle.js" defer></script>
-    <script src="uv/uv.config.js" defer></script>
-    <script src="register-sw.js" defer></script>
-    <script src="search.js" defer></script>
-    <script src="index.js" defer></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        var currentUrl = window.location.href;
-        var urlObject = new URL(currentUrl);
-        var domain = urlObject.hostname;
-        document.getElementById("header").innerText = "Current Domain: " + domain;
-      });
-    </script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Remove scroll bars */
+        background-color: #67358C;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-top: 5px;
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #434c5e;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #434c5e;
+      }
+
+      header {
+        background-color: #2d2d2d; /* Greyish-black */
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer {
+        background-color: #2d2d2d; /* Greyish-black */
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        margin-top: auto; /* Push footer to the bottom */
+        width: 100%; /* Full width */
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Center the content vertically */
+        box-sizing: border-box;
+      }
+
+      footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+    </style>
   </head>
 
   <body>
     <header>
-      <button onclick="window.location.href=window.location.origin">Home</button>
+      <button onclick="window.location.href='index.html'">Home</button>
       <button onclick="window.location.href='options.html'">Options</button>
-      <button onclick="window.location.href='/uv/service/hvtrs8%2F-cjav.mpgnci%2Ccmm-awtj%2Fnoeil'">ChatGPT</button>
     </header>
 
     <h1>Options</h1>
@@ -37,7 +94,7 @@
     <label for="faviconURL">Icon URL:</label>
     <input type="text" id="faviconURL" placeholder="Enter favicon URL" />
 
-    <button onclick="spoofWebsite()">Cloak</button>
+    <button onclick="saveAndSpoof()">Cloak</button>
 
     <footer>
       <div>
@@ -48,5 +105,47 @@
         <span>Infrared &copy; LN 2024</span>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        loadSettings();
+      });
+
+      function loadSettings() {
+        const tabNameInput = document.getElementById('tabName');
+        const faviconURLInput = document.getElementById('faviconURL');
+
+        const storedTabName = localStorage.getItem('tabName');
+        const storedFaviconURL = localStorage.getItem('faviconURL');
+
+        tabNameInput.value = storedTabName || '';
+        faviconURLInput.value = storedFaviconURL || '';
+      }
+
+      function saveSettings() {
+        const tabNameInput = document.getElementById('tabName');
+        const faviconURLInput = document.getElementById('faviconURL');
+
+        localStorage.setItem('tabName', tabNameInput.value);
+        localStorage.setItem('faviconURL', faviconURLInput.value);
+      }
+
+      function spoofWebsite() {
+        const tabNameInput = document.getElementById('tabName');
+        const faviconURLInput = document.getElementById('faviconURL');
+
+        document.title = tabNameInput.value;
+        const faviconLink = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        faviconLink.type = 'image/x-icon';
+        faviconLink.rel = 'shortcut icon';
+        faviconLink.href = faviconURLInput.value;
+        document.getElementsByTagName('head')[0].appendChild(faviconLink);
+      }
+
+      function saveAndSpoof() {
+        saveSettings();
+        spoofWebsite();
+      }
+    </script>
   </body>
 </html>
